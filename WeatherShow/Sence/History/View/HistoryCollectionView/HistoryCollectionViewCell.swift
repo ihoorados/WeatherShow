@@ -14,20 +14,20 @@ class HistoryCollectionViewCell: UICollectionViewCell{
     
     var LocationLabel:UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 70.0, weight: .bold)
+        label.font = Setting.Display.Font.SubHead
         label.textColor = #colorLiteral(red: 0.2823529412, green: 0.8352941176, blue: 0.3882352941, alpha: 1)
         return label
     }()
     var tempLabel:UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24.0, weight: .medium)
-        label.textColor = #colorLiteral(red: 0.137254902, green: 0.1529411765, blue: 0.1803921569, alpha: 1)
+        label.font = Setting.Display.Font.SmallTitle
+        label.textColor = .white
         return label
     }()
     var dateLable:UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16.0, weight: .light)
-        label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        label.font = Setting.Display.Font.SmallTitle
+        label.textColor = .white
         return label
     }()
     
@@ -44,22 +44,29 @@ class HistoryCollectionViewCell: UICollectionViewCell{
     
     func setupDataSource(object:History){
         dateLable.text = object.date
-        tempLabel.text = "\(object.temp) kelvin"
-        LocationLabel.text = "\(object.id)"
+        tempLabel.text = "\(ConvertToC(value: object.temp)) ℃"
+        LocationLabel.text = object.location
     }
     
     private func setupLayout(){
-        dateLable.anchor(top: self.topAnchor, left: self.leftAnchor)
-        tempLabel.anchor(top: self.topAnchor, left: dateLable.rightAnchor)
-        LocationLabel.anchor(top: self.topAnchor, right: self.rightAnchor)
+        dateLable.anchor(top: self.topAnchor, left: self.leftAnchor,paddingLeft: 32.0)
+        tempLabel.anchor(top: dateLable.bottomAnchor, left: self.leftAnchor,paddingLeft: 32.0)
+        LocationLabel.anchor(top: tempLabel.bottomAnchor, left: self.leftAnchor,paddingLeft: 32.0)
     }
     
     private func setUpView(){
         self.addSubview(dateLable)
         self.addSubview(tempLabel)
         self.addSubview(LocationLabel)
+        self.layer.cornerRadius = Setting.Display.cornerRadius.baseCornerRadius
+        self.clipsToBounds = true
+        self.backgroundColor = .darkText
         
     }
     
+    // these guys shouldn't be here
+    private func ConvertToC(value:Double) -> Int {
+        return Int(value - 273.15)
+    }
 
 }

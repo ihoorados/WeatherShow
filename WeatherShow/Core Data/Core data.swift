@@ -54,6 +54,7 @@ class DataManagement {
         item.setValue(data.dt, forKey: "id")
         item.setValue(data.main.temp, forKey: "temp")
         item.setValue(date, forKey: "date")
+        item.setValue(data.name, forKey: "location")
         do {
             try managedObjectContext!.save()
             print("Data Saved")

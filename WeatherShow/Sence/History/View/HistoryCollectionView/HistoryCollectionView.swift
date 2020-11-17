@@ -36,7 +36,7 @@ extension HistoryVC : UICollectionViewDataSource {
 extension HistoryVC : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.historyCollectionView.frame.width - 16), height: 80)
+        return CGSize(width: (self.historyCollectionView.frame.width - 16), height: 142)
     }
     
 }
