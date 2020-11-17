@@ -2,7 +2,7 @@
 
 Weather Show 
 
-![Header](/Simulator Screen Shot - iPhone 12 - 2020-11-17 at 20.44.49.png)
+![Header](/weatherShowimg)
 
 # Architect
 
