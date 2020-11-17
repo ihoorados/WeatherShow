@@ -15,23 +15,20 @@ struct ServiceController {
         return service
     }()
     
-    // Mark: - Api List
+    // Mark: - Create Custom Request
     var Request : HTTPRequest {
         var feedRequest = HTTPRequest()
         feedRequest.method = HTTPMethod.get.rawValue
-        feedRequest.path = "/data/2.5/weather?q=Tehran&appid=8110abec2c686cca32a15eb9a6dc1553"
-        feedRequest.scheme = "https"
-        feedRequest.host = "api.openweathermap.org"
-        feedRequest.headers = HTTPHeaders(["Content-Type":"application/json"])
+        feedRequest.urlComp = NSURLComponents(string: "https://api.openweathermap.org/data/2.5/weather")!
+        feedRequest.parameter =  ["q" : "Tehran","appid":"8110abec2c686cca32a15eb9a6dc1553"]
         return feedRequest
     }
     
+    // Mark: - request
     func RequestWeather(completion: @escaping (Data?, Error?) -> Void){
         ServiceShared.DataTask(Request) { (data, err) in
             completion(data,err)
         }
     }
-    
-    
 }
 

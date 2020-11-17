@@ -12,10 +12,11 @@ public enum HTTPMethod: String {
     case post = "POST"
 }
 
-public typealias HTTPParameters = [String: Any]?
+public typealias HTTPParameters = [String: String]?
 public typealias HTTPHeaders = [String: String]?
 
 struct HTTPRequest{
+    var urlComp:NSURLComponents?
     var path: String?
     var host: String?
     var scheme: String?

@@ -6,16 +6,18 @@
 //
 
 import UIKit
+import Foundation
 
 class HomeVC: UIViewController {
     
-    
     // init lazy viewModel
     lazy var viewModel:HomeViewModel = {
-        let viewModel = HomeViewModel()
+        let viewModel = HomeViewModel(view: self)
         return viewModel
     }()
     
+    var userDelegate:UserInfoDelegate?
+    var weatherDelegate:WeatherInfoDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,25 +26,34 @@ class HomeVC: UIViewController {
         self.title = "Weather Show"
         setupView()
         setupLayout()
-        addVCs()
-        viewModel.LoadData()
+        viewModel = HomeViewModel(view: (self))
+        viewModel.startEngine()
     }
     
     // Mark: -properties
     lazy var userInfoContainer: UIView = {
         let view = UIView()
+        view.alpha = 0.0
         return view
     }()
     
     lazy var weatherInfoContainer: UIView = {
         let view = UIView()
+        view.alpha = 0.0
         return view
+    }()
+    
+    lazy var activityIndactor:UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView(style: .large)
+        ai.alpha = 0.0
+        return ai
     }()
     
     // Mark - setup and add views
     private func setupView(){
         self.view.addSubview(userInfoContainer)
         self.view.addSubview(weatherInfoContainer)
+        self.view.addSubview(activityIndactor)
     }
     
     // Mark - configure views and apply autoLayout
@@ -50,20 +61,61 @@ class HomeVC: UIViewController {
         
         userInfoContainer.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor,right: self.view.rightAnchor,paddingLeft: 0.0, paddingRight: 0.0, height: 82)
         weatherInfoContainer.anchor(top: userInfoContainer.bottomAnchor, left: self.view.leftAnchor,bottom: self.view.bottomAnchor, right: self.view.rightAnchor,paddingLeft: 0.0, paddingBottom: 64.0, paddingRight: 0.0,width: self.view.frame.width,cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
+        activityIndactor.center = self.view.center
         self.view.layoutIfNeeded()
-        
-        
     }
+    
     private func addVCs(){
         let userInfoVC = UserInfoVC()
+        self.userDelegate = userInfoVC.self
+        
         let weatherInfoVC = WeatherInfoVC()
+        self.weatherDelegate = weatherInfoVC.self
+        
         add(vc: userInfoVC, to: userInfoContainer)
         add(vc: weatherInfoVC, to: weatherInfoContainer)
     }
     
+    func updateViewItems(){
+        addVCs()
+        self.userDelegate?.bindingData(data: self.viewModel.dataModel!)
+        self.weatherDelegate?.bindingData(data: self.viewModel.dataModel!, today: viewModel.today!)
+    }
     
-
-
-
+    
 }
 
+
+extension HomeVC : HomeDelegate {
+    
+    
+    func invalidData() {
+        print("invalid Data")
+    }
+    
+    
+    func updatingData() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) {
+                self.userInfoContainer.alpha = 0.0
+                self.weatherInfoContainer.alpha = 0.0
+                self.activityIndactor.alpha = 1.0
+                self.activityIndactor.startAnimating()
+            }
+        }
+    }
+    
+    func dataUpdated() {
+        DispatchQueue.main.async {
+            self.updateViewItems()
+            UIView.animate(withDuration: 0.5) {
+                self.activityIndactor.stopAnimating()
+                self.userInfoContainer.alpha = 1.0
+                self.weatherInfoContainer.alpha = 1.0
+                self.activityIndactor.alpha = 0.0
+            }
+        }
+    }
+    
+    
+}

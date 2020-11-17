@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct ServiceNetworkTools : ServiceToolsProtocol {
 
             
@@ -18,36 +19,34 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
     
     func configureRequestForDataTask(_ httpRequest: HTTPRequest) throws -> URLRequest {
         
-        guard let method = httpRequest.method  else {
-            throw HTTPNetworkError.failed
+        var request: URLRequest
+        var items = [URLQueryItem]()
+        
+        // Validate Parameter
+        guard let parameter = httpRequest.parameter else {
+            throw HTTPNetworkError.headersNil
         }
-        guard let scheme = httpRequest.scheme else{
-            throw HTTPNetworkError.missingURL
-        }
-        guard let host = httpRequest.host else{
-            throw HTTPNetworkError.missingURL
-        }
-        guard let path = httpRequest.path else {
-            throw HTTPNetworkError.missingURL
-        }
-        guard let url = getURL(scheme: scheme, path: path, host: host) else {
-            throw HTTPNetworkError.missingURL
+        guard let parameterfeilds = parameter else {
+            throw HTTPNetworkError.headersNil
         }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-
-        if httpRequest.headers != nil {
-            
-            guard let headers = httpRequest.headers else {
-                throw HTTPNetworkError.headersNil
-            }
-            guard let headerfeilds = headers else {
-                throw HTTPNetworkError.headersNil
-            }
-            request.allHTTPHeaderFields = headerfeilds
+        // add parameter
+        for (key,value) in parameterfeilds {
+            items.append(URLQueryItem(name: key, value: value))
         }
+        items = items.filter{!$0.name.isEmpty}
+        guard let urlCompQueryItems = httpRequest.urlComp else {
+            throw HTTPNetworkError.headersNil
+        }
+        if !items.isEmpty {
+            urlCompQueryItems.queryItems = items
+        }
+        
+        // make request
+        request = URLRequest(url: urlCompQueryItems.url!)
+        request.httpMethod = "GET"
         return request
+        
     }
     
 

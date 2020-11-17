@@ -76,7 +76,19 @@ class WeatherDetailsView: UIView {
         WeatherTitle.anchor(top: DateTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingLeft: 32.0)
         WeatherDescription.anchor(top: WeatherTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingLeft: 32.0)
     }
-
+    
+    func updateData(data:HomeModel,today:String){
+        self.WeatherDescription.text = "\(data.weather.first!.main), \(data.weather.first!.weatherDescription)"
+        self.WeatherTitle.text = "\(ConvertToC(value: data.main.temp))℃"
+        self.DateTitle.text = today
+    }
+    
+    
+    
+    // these guys shouldn't be here
+    private func ConvertToC(value:Double) -> Int {
+        return Int(value - 273.15)
+    }
 
 }
 

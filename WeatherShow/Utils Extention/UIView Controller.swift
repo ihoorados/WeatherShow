@@ -11,7 +11,6 @@ import UIKit
 extension UIViewController{
     
     func add(vc:UIViewController,to view:UIView){
-                
         addChild(vc)
         vc.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         vc.view.center.y += self.view.frame.height

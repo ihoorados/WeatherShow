@@ -10,43 +10,7 @@ import UIKit
 
 class Setting: NSObject {
     
-    
-    struct Device {
-        enum UIUserInterfaceIdiom : Int {
-            case unspecified
-            case phone // iPhone and iPod touch style UI
-            case pad   // iPad style UI (also includes macOS Catalyst)
-        }
-    }
-    
-    struct URL {
-        static var Baseurl = ""
-    }
-    
-    struct Error {
-        static var Server = "Server Error"
-    }
-    
     struct Display {
-        
-        struct colors {
-            struct main {
-                static var primaryColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
-                static var secondaryColor = #colorLiteral(red: 0.231372549, green: 0.7176470588, blue: 0.631372549, alpha: 1)
-                static var tertiaryColor = #colorLiteral(red: 0.9529411765, green: 0.9568627451, blue: 0.9607843137, alpha: 1)
-                
-                static var Dashboard = #colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1)
-                static var TopView = #colorLiteral(red: 0.231372549, green: 0.7176470588, blue: 0.631372549, alpha: 1)
-            }
-            struct text {
-                static var titleColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
-                static var subTitleColor = #colorLiteral(red: 0.5704585314, green: 0.5704723597, blue: 0.5704649091, alpha: 1)
-            }
-            struct button {
-                static var BorderColor = #colorLiteral(red: 0.5704585314, green: 0.5704723597, blue: 0.5704649091, alpha: 1)
-                static var PrimaryColor = #colorLiteral(red: 0.231372549, green: 0.7176470588, blue: 0.631372549, alpha: 1)
-            }
-        }
         
         struct Font {
             
