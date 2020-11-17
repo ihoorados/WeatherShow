@@ -28,7 +28,6 @@
 		706FB10F2562CD1500ACF3E0 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FB10E2562CD1500ACF3E0 /* CardDetailsView.swift */; };
 		7072CFC52563FB1400D25AD6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FB0DE2562B51800ACF3E0 /* HomeVC.swift */; };
 		70A84F4D256401620039594D /* Date Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F4C256401620039594D /* Date Extention.swift */; };
-		70A84F5025640F760039594D /* UserDefault Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F4F25640F760039594D /* UserDefault Extention.swift */; };
 		70A84F5625641A2C0039594D /* Core data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F5525641A2C0039594D /* Core data.swift */; };
 		70A84F5C25641BDB0039594D /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F5B25641BDB0039594D /* HistoryVC.swift */; };
 		70A84F6125641C880039594D /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F6025641C880039594D /* HistoryCollectionViewCell.swift */; };
@@ -60,7 +59,6 @@
 		706FB1092562C0F400ACF3E0 /* WeatherInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoVC.swift; sourceTree = "<group>"; };
 		706FB10E2562CD1500ACF3E0 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
 		70A84F4C256401620039594D /* Date Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date Extention.swift"; sourceTree = "<group>"; };
-		70A84F4F25640F760039594D /* UserDefault Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault Extention.swift"; sourceTree = "<group>"; };
 		70A84F5525641A2C0039594D /* Core data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core data.swift"; sourceTree = "<group>"; };
 		70A84F5B25641BDB0039594D /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		70A84F6025641C880039594D /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 				706FB0FC2562BB6600ACF3E0 /* UIView Constraint.swift */,
 				706FB1042562BD5300ACF3E0 /* UIView Controller.swift */,
 				70A84F4C256401620039594D /* Date Extention.swift */,
-				70A84F4F25640F760039594D /* UserDefault Extention.swift */,
 			);
 			path = "Utils Extention";
 			sourceTree = "<group>";
@@ -322,7 +319,6 @@
 				702E03C92562E556006CFB22 /* HttpNetwork.swift in Sources */,
 				702E03C62562E539006CFB22 /* ServiceNetworkProtocol.swift in Sources */,
 				702E03C32562E51F006CFB22 /* ServiceNetworkTools.swift in Sources */,
-				70A84F5025640F760039594D /* UserDefault Extention.swift in Sources */,
 				70A84F4D256401620039594D /* Date Extention.swift in Sources */,
 				706FB10A2562C0F400ACF3E0 /* WeatherInfoVC.swift in Sources */,
 				706FB0E52562B51800ACF3E0 /* WeatherShow.xcdatamodeld in Sources */,
