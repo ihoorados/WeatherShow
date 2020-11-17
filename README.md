@@ -2,7 +2,7 @@
 
 Weather Show 
 
-![Header](/weatherShowimg)
+![Header](/weatherShowimg.png)
 
 # Architect
 
