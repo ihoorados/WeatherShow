@@ -8,14 +8,6 @@
 import UIKit
 import Foundation
 
-
-protocol HomeDelegate: class {
-    func updatingData() -> ()
-    func invalidData() -> ()
-    func dataUpdated() -> ()
-}
-
-
 class HomeVC: UIViewController {
     
     // init lazy viewModel
@@ -41,19 +33,16 @@ class HomeVC: UIViewController {
     // Mark: -properties
     lazy var userInfoContainer: UIView = {
         let view = UIView()
-        view.alpha = 0.0
         return view
     }()
     
     lazy var weatherInfoContainer: UIView = {
         let view = UIView()
-        view.alpha = 0.0
         return view
     }()
     
     lazy var activityIndactor:UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .large)
-        ai.alpha = 0.0
         return ai
     }()
     
@@ -66,7 +55,6 @@ class HomeVC: UIViewController {
     
     // Mark - configure views and apply autoLayout
     private func setupLayout(){
-        
         userInfoContainer.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor,right: self.view.rightAnchor,paddingLeft: 0.0, paddingRight: 0.0, height: 82)
         weatherInfoContainer.anchor(top: userInfoContainer.bottomAnchor, left: self.view.leftAnchor,bottom: self.view.bottomAnchor, right: self.view.rightAnchor,paddingLeft: 0.0, paddingBottom: 64.0, paddingRight: 0.0,width: self.view.frame.width,cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
         activityIndactor.center = self.view.center
@@ -89,25 +77,28 @@ class HomeVC: UIViewController {
         self.userDelegate?.bindingData(data: self.viewModel.dataModel!)
         self.weatherDelegate?.bindingData(data: self.viewModel.dataModel!, today: viewModel.today!)
     }
-    
-    
 }
 
+// Mark: - Home Data Model Delegate
+
+protocol HomeDelegate: class {
+    func updatingData() -> ()
+    func invalidData() -> ()
+    func dataUpdated() -> ()
+}
 
 extension HomeVC : HomeDelegate {
     
-    
     func invalidData() {
-        print("invalid Data")
+        // Restart engine
+        viewModel.startEngine()
     }
-    
     
     func updatingData() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.5) {
-                self.userInfoContainer.alpha = 0.0
-                self.weatherInfoContainer.alpha = 0.0
-                self.activityIndactor.alpha = 1.0
+                self.userInfoContainer.center.y += self.view.frame.height
+                self.weatherInfoContainer.center.y += self.view.frame.height
                 self.activityIndactor.startAnimating()
             }
         }
@@ -118,8 +109,8 @@ extension HomeVC : HomeDelegate {
             self.updateViewItems()
             UIView.animate(withDuration: 0.5) {
                 self.activityIndactor.stopAnimating()
-                self.userInfoContainer.alpha = 1.0
-                self.weatherInfoContainer.alpha = 1.0
+                self.userInfoContainer.center.y -= self.view.frame.height
+                self.weatherInfoContainer.center.y -= self.view.frame.height
                 self.activityIndactor.alpha = 0.0
             }
         }

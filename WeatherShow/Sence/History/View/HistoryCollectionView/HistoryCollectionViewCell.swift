@@ -51,7 +51,7 @@ class HistoryCollectionViewCell: UICollectionViewCell{
     private func setupLayout(){
         dateLable.anchor(top: self.topAnchor, left: self.leftAnchor,paddingLeft: 32.0)
         tempLabel.anchor(top: dateLable.bottomAnchor, left: self.leftAnchor,paddingLeft: 32.0)
-        LocationLabel.anchor(top: tempLabel.bottomAnchor, left: self.leftAnchor,paddingLeft: 32.0)
+        LocationLabel.anchor(top: tempLabel.bottomAnchor, left: self.leftAnchor,paddingTop: 8.0,paddingLeft: 32.0)
     }
     
     private func setUpView(){

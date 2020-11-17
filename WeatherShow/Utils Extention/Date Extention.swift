@@ -14,14 +14,17 @@ extension Date {
         dateFormatter.dateFormat = "MMMM"
         return dateFormatter.string(from: self)
     }
-    
     var dayOfWeek : String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self).capitalized
     }
-    
+    var day: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: self).capitalized
+    }
     func getToday() -> String {
-        return "\(dayOfWeek) 30 \(month)"
+        return "\(dayOfWeek) \(day) \(month)"
     }
 }

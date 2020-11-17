@@ -26,7 +26,9 @@ class HistoryVC: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        setupExitButton()
         setupCollectionView()
+        setupTitleLable()
         viewModel = HistoryViewModel(view: (self))
         viewModel.loadHistory()
     }
@@ -35,6 +37,20 @@ class HistoryVC: UIViewController{
         let ai = UIActivityIndicatorView(style: .large)
         ai.alpha = 0.0
         return ai
+    }()
+    
+    private var exitButton:UIButton = {
+        var btn = UIButton()
+        btn.setTitle("❌", for: .normal)
+        btn.titleLabel?.font = Setting.Display.Font.LargeTitle
+        return btn
+    }()
+    
+    private var titleLabel:UILabel = {
+        var lbl = UILabel()
+        lbl.text = "All Request History"
+        lbl.font = Setting.Display.Font.MediumTitle
+        return lbl
     }()
     
     let historyCellIdentifier = "historyCellIdentifier"
@@ -59,8 +75,23 @@ class HistoryVC: UIViewController{
         
         historyCollectionView.register(HistoryCollectionViewCell.self, forCellWithReuseIdentifier: historyCellIdentifier)
         self.view.addSubview(historyCollectionView)
-        historyCollectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor, right: self.view.rightAnchor)
+        historyCollectionView.anchor(top: exitButton.bottomAnchor, left: self.view.leftAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor, right: self.view.rightAnchor)
         
+    }
+    
+    private func setupExitButton(){
+        self.view.addSubview(exitButton)
+        exitButton.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, right: self.view.rightAnchor,paddingRight: 32.0)
+        exitButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+    }
+    
+    private func setupTitleLable(){
+        self.view.addSubview(titleLabel)
+        titleLabel.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, paddingLeft: 32.0)
+    }
+    
+    @objc private func dismissView(){
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

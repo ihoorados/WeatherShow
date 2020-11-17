@@ -82,8 +82,8 @@
 		702E03AD2562E2B9006CFB22 /* Sence */ = {
 			isa = PBXGroup;
 			children = (
-				70A84F6625641DB10039594D /* History */,
 				7072CFC22563FAA500D25AD6 /* Home */,
+				70A84F6625641DB10039594D /* History */,
 			);
 			path = Sence;
 			sourceTree = "<group>";
