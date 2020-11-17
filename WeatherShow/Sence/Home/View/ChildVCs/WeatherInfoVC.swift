@@ -45,12 +45,23 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
         return view
     }()
     
+    private var historyButton:UIButton = {
+        var btn = UIButton()
+        btn.setTitle("All history", for: .normal)
+        btn.titleLabel?.font = Setting.Display.Font.SmallTitle
+        btn.setTitleColor(.darkText, for: .normal)
+        btn.layer.borderColor = UIColor.darkText.cgColor
+        btn.layer.borderWidth = 2
+        return btn
+    }()
+    
     // Mark - setup and add views
     private func setupView(){
         self.view.addSubview(weatherDetailsView)
         self.view.addSubview(WindstatusCard)
         self.view.addSubview(humidityCard)
-
+        self.view.addSubview(historyButton)
+        historyButton.addTarget(self, action: #selector(NavigateToHistory), for: .touchUpInside)
     }
     
     // Mark - configure views and apply autoLayout
@@ -60,11 +71,17 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
         weatherDetailsView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, right: self.view.rightAnchor,height: 252, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
         WindstatusCard.anchor(top: weatherDetailsView.bottomAnchor, left: self.view.leftAnchor, width: CardWith(width: self.view.frame.width), height: 132.0, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
         humidityCard.anchor(top: weatherDetailsView.bottomAnchor, left: WindstatusCard.rightAnchor, width: CardWith(width: self.view.frame.width), height: 132.0, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
+        historyButton.anchor(top: humidityCard.bottomAnchor,left: self.view.leftAnchor,right: self.view.rightAnchor, height: 70, cornerRadius: 16.0)
+        historyButton.centerX(inView: self.view)
     }
     
     // bad position function
     func CardWith(width:CGFloat) -> CGFloat {
         let width = width - 48.0
         return width / 2
+    }
+    
+    @objc func NavigateToHistory(){
+        print("navigate  to history")
     }
 }
