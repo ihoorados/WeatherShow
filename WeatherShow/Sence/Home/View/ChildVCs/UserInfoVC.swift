@@ -67,8 +67,8 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
     
     // Mark - configure views and apply autoLayout
     private func setupLayout(){
-        locationImageView.anchor(top: self.view.topAnchor,left: self.view.leftAnchor, width: 35.0, height: 35.0)
-        locationTitle.anchor(top: self.view.topAnchor,left: locationImageView.rightAnchor,right: self.view.safeAreaLayoutGuide.rightAnchor,paddingTop: 20.0)
+        locationImageView.anchor(top: self.view.topAnchor,left: self.view.leftAnchor, width: 40.0, height: 40.0)
+        locationTitle.anchor(top: self.view.topAnchor,left: locationImageView.rightAnchor,right: self.view.safeAreaLayoutGuide.rightAnchor,paddingTop: 24.0)
         userProfileImageView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, right: self.view.rightAnchor,width: 60, height: 60)
     }
     

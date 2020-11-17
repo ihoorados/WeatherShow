@@ -97,8 +97,6 @@ extension HomeVC : HomeDelegate {
     func updatingData() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.5) {
-                self.userInfoContainer.center.y += self.view.frame.height
-                self.weatherInfoContainer.center.y += self.view.frame.height
                 self.activityIndactor.startAnimating()
             }
         }
@@ -109,8 +107,6 @@ extension HomeVC : HomeDelegate {
             self.updateViewItems()
             UIView.animate(withDuration: 0.5) {
                 self.activityIndactor.stopAnimating()
-                self.userInfoContainer.center.y -= self.view.frame.height
-                self.weatherInfoContainer.center.y -= self.view.frame.height
                 self.activityIndactor.alpha = 0.0
             }
         }

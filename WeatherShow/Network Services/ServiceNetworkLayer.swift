@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 struct ServiceNetworkLayer{
-    
     var tools : ServiceNetworkTools = {
         let tools = ServiceNetworkTools()
         return tools
@@ -20,7 +18,6 @@ extension ServiceNetworkLayer : ServiceProtocol {
     
     func DataTask(_ request: HTTPRequest, completion: @escaping (Data?, Error?) -> Void) {
         do{
-            
             // create URLRequest
             let TaskRequest = try tools.configureRequestForDataTask(request)
             // Start new task with Task Request

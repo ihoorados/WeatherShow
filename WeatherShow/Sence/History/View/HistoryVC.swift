@@ -49,7 +49,7 @@ class HistoryVC: UIViewController{
     private var titleLabel:UILabel = {
         var lbl = UILabel()
         lbl.text = "All Request History"
-        lbl.font = Setting.Display.Font.MediumTitle
+        lbl.font = Setting.Display.Font.SmallTitle
         return lbl
     }()
     
@@ -87,7 +87,7 @@ class HistoryVC: UIViewController{
     
     private func setupTitleLable(){
         self.view.addSubview(titleLabel)
-        titleLabel.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, paddingLeft: 32.0)
+        titleLabel.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, paddingTop: 24.0, paddingLeft: 32.0)
     }
     
     @objc private func dismissView(){

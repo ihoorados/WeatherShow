@@ -15,13 +15,13 @@ class HistoryCollectionViewCell: UICollectionViewCell{
     var LocationLabel:UILabel = {
         let label = UILabel()
         label.font = Setting.Display.Font.SubHead
-        label.textColor = #colorLiteral(red: 0.2823529412, green: 0.8352941176, blue: 0.3882352941, alpha: 1)
+        label.textColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         return label
     }()
     var tempLabel:UILabel = {
         let label = UILabel()
         label.font = Setting.Display.Font.SmallTitle
-        label.textColor = .white
+        label.textColor = .yellow
         return label
     }()
     var dateLable:UILabel = {

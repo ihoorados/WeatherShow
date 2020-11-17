@@ -9,7 +9,6 @@ import Foundation
 
 
 struct ServiceNetworkTools : ServiceToolsProtocol {
-
             
     // Create a session for a URLSession
     var session : URLSession = {
@@ -90,14 +89,6 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
         }
         guard let data = data else { throw HTTPNetworkError.noData }
         return data
-    }
-    
-    func getURL(scheme:String,path:String,host:String) -> URL? {
-        var component = URLComponents()
-        component.scheme = scheme
-        component.host = host
-        component.path = path
-        return component.url
     }
     
     

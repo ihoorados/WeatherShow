@@ -46,7 +46,6 @@ extension UIView {
             self.layer.cornerRadius = cornerRadius
             self.clipsToBounds = true
         }
-        
     }
     
     func centerX(inView view : UIView){
