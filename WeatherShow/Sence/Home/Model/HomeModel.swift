@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct HomeModel2 : HomeModelPresentable{
-    var date:           String
-    var temp:           String
-    var description:    String
-    var speed:          String
-    var humidity:       String
-    var id:             Int
-}
-
 protocol HomeModelPresentable {
     var date:           String  {get}
     var temp:           String  {get}
@@ -26,19 +17,19 @@ protocol HomeModelPresentable {
 }
 
 // MARK: - Welcome
-struct HomeModel: Decodable {
+struct HomeModel: Decodable , Encodable{
     let coord: Coord
     let weather: [Weather]
-    let base: String
+    let base: String?
     let main: Main
-    let visibility: Int
+    let visibility: Int?
     let wind: Wind
-    let clouds: Clouds
+    let clouds: Clouds?
     let dt: Int
     let sys: Sys
     let timezone, id: Int
     let name: String
-    let cod: Int
+    let cod: Int?
 }
 
 // MARK: - Clouds

@@ -8,6 +8,14 @@
 import UIKit
 import Foundation
 
+
+protocol HomeDelegate: class {
+    func updatingData() -> ()
+    func invalidData() -> ()
+    func dataUpdated() -> ()
+}
+
+
 class HomeVC: UIViewController {
     
     // init lazy viewModel

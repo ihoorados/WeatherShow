@@ -28,7 +28,12 @@
 		706FB10F2562CD1500ACF3E0 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FB10E2562CD1500ACF3E0 /* CardDetailsView.swift */; };
 		7072CFC52563FB1400D25AD6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FB0DE2562B51800ACF3E0 /* HomeVC.swift */; };
 		70A84F4D256401620039594D /* Date Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F4C256401620039594D /* Date Extention.swift */; };
-		70CDA4C825630689000A64D6 /* HomeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDA4C725630689000A64D6 /* HomeDelegate.swift */; };
+		70A84F5025640F760039594D /* UserDefault Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F4F25640F760039594D /* UserDefault Extention.swift */; };
+		70A84F5625641A2C0039594D /* Core data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F5525641A2C0039594D /* Core data.swift */; };
+		70A84F5C25641BDB0039594D /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F5B25641BDB0039594D /* HistoryVC.swift */; };
+		70A84F6125641C880039594D /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F6025641C880039594D /* HistoryCollectionViewCell.swift */; };
+		70A84F6425641D050039594D /* HistoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F6325641D050039594D /* HistoryCollectionView.swift */; };
+		70A84F6A25641DDC0039594D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F6925641DDC0039594D /* HistoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +60,12 @@
 		706FB1092562C0F400ACF3E0 /* WeatherInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoVC.swift; sourceTree = "<group>"; };
 		706FB10E2562CD1500ACF3E0 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
 		70A84F4C256401620039594D /* Date Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date Extention.swift"; sourceTree = "<group>"; };
-		70CDA4C725630689000A64D6 /* HomeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDelegate.swift; sourceTree = "<group>"; };
+		70A84F4F25640F760039594D /* UserDefault Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault Extention.swift"; sourceTree = "<group>"; };
+		70A84F5525641A2C0039594D /* Core data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core data.swift"; sourceTree = "<group>"; };
+		70A84F5B25641BDB0039594D /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		70A84F6025641C880039594D /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		70A84F6325641D050039594D /* HistoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionView.swift; sourceTree = "<group>"; };
+		70A84F6925641DDC0039594D /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,7 @@
 		702E03AD2562E2B9006CFB22 /* Sence */ = {
 			isa = PBXGroup;
 			children = (
+				70A84F6625641DB10039594D /* History */,
 				7072CFC22563FAA500D25AD6 /* Home */,
 			);
 			path = Sence;
@@ -108,6 +119,7 @@
 		706FB0D92562B51800ACF3E0 /* WeatherShow */ = {
 			isa = PBXGroup;
 			children = (
+				70A84F5425641A1E0039594D /* Core Data */,
 				702E03B62562E402006CFB22 /* Network Services */,
 				706FB10D2562CCE200ACF3E0 /* ReusableViews */,
 				706FB0FF2562BB8100ACF3E0 /* Setting */,
@@ -163,6 +175,7 @@
 				706FB0FC2562BB6600ACF3E0 /* UIView Constraint.swift */,
 				706FB1042562BD5300ACF3E0 /* UIView Controller.swift */,
 				70A84F4C256401620039594D /* Date Extention.swift */,
+				70A84F4F25640F760039594D /* UserDefault Extention.swift */,
 			);
 			path = "Utils Extention";
 			sourceTree = "<group>";
@@ -187,20 +200,54 @@
 		7072CFC22563FAA500D25AD6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				706FB0F32562B72D00ACF3E0 /* View */,
-				70CDA4C62563066E000A64D6 /* Protocols */,
 				706FB0F22562B72500ACF3E0 /* Model */,
+				706FB0F32562B72D00ACF3E0 /* View */,
 				706FB0F42562B73600ACF3E0 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		70CDA4C62563066E000A64D6 /* Protocols */ = {
+		70A84F5425641A1E0039594D /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				70CDA4C725630689000A64D6 /* HomeDelegate.swift */,
+				70A84F5525641A2C0039594D /* Core data.swift */,
 			);
-			path = Protocols;
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		70A84F5F25641C5D0039594D /* HistoryCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				70A84F6325641D050039594D /* HistoryCollectionView.swift */,
+				70A84F6025641C880039594D /* HistoryCollectionViewCell.swift */,
+			);
+			path = HistoryCollectionView;
+			sourceTree = "<group>";
+		};
+		70A84F6625641DB10039594D /* History */ = {
+			isa = PBXGroup;
+			children = (
+				70A84F6825641DC90039594D /* View */,
+				70A84F6725641DC10039594D /* ViewModel */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		70A84F6725641DC10039594D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70A84F6925641DDC0039594D /* HistoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70A84F6825641DC90039594D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70A84F5B25641BDB0039594D /* HistoryVC.swift */,
+				70A84F5F25641C5D0039594D /* HistoryCollectionView */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,21 +322,26 @@
 				702E03C92562E556006CFB22 /* HttpNetwork.swift in Sources */,
 				702E03C62562E539006CFB22 /* ServiceNetworkProtocol.swift in Sources */,
 				702E03C32562E51F006CFB22 /* ServiceNetworkTools.swift in Sources */,
+				70A84F5025640F760039594D /* UserDefault Extention.swift in Sources */,
 				70A84F4D256401620039594D /* Date Extention.swift in Sources */,
-				70CDA4C825630689000A64D6 /* HomeDelegate.swift in Sources */,
 				706FB10A2562C0F400ACF3E0 /* WeatherInfoVC.swift in Sources */,
 				706FB0E52562B51800ACF3E0 /* WeatherShow.xcdatamodeld in Sources */,
 				702E03BC2562E4CE006CFB22 /* Services.swift in Sources */,
 				706FB0DB2562B51800ACF3E0 /* AppDelegate.swift in Sources */,
 				706FB0DD2562B51800ACF3E0 /* SceneDelegate.swift in Sources */,
+				70A84F6A25641DDC0039594D /* HistoryViewModel.swift in Sources */,
 				702E03A72562DBAB006CFB22 /* WeatherDetailsView.swift in Sources */,
 				706FB1012562BB8C00ACF3E0 /* Setting.swift in Sources */,
 				702E03B12562E373006CFB22 /* HomeViewModel.swift in Sources */,
 				706FB0FD2562BB6600ACF3E0 /* UIView Constraint.swift in Sources */,
 				702E03B42562E3A4006CFB22 /* HomeModel.swift in Sources */,
+				70A84F6425641D050039594D /* HistoryCollectionView.swift in Sources */,
+				70A84F6125641C880039594D /* HistoryCollectionViewCell.swift in Sources */,
 				702E03C02562E4F8006CFB22 /* ServiceNetworkLayer.swift in Sources */,
 				706FB10F2562CD1500ACF3E0 /* CardDetailsView.swift in Sources */,
 				706FB0F82562B7ED00ACF3E0 /* UserInfoVC.swift in Sources */,
+				70A84F5625641A2C0039594D /* Core data.swift in Sources */,
+				70A84F5C25641BDB0039594D /* HistoryVC.swift in Sources */,
 				7072CFC52563FB1400D25AD6 /* HomeVC.swift in Sources */,
 				706FB1052562BD5300ACF3E0 /* UIView Controller.swift in Sources */,
 			);

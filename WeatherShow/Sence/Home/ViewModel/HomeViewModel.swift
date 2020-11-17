@@ -12,6 +12,7 @@ class HomeViewModel{
     
     // Mark: - Properties
     var service : ServiceController = ServiceController()
+    var dataManagement: DataManagement = DataManagement()
     var dataModel : HomeModel?
     weak var Home:HomeDelegate?
     var today: String?
@@ -37,8 +38,9 @@ class HomeViewModel{
     func LoadData(completion: @escaping (Bool) -> Void){
         service.RequestWeather { (data, err) in
             if let Data = data {
-                self.service.ServiceShared.tools.JSONSerializationWith(Data) { (json, err) in
+                self.service.ServiceShared.tools.JSONSerializationWith(Data) { [self] (json, err) in
                     self.dataModel = self.DecodeAndUpdateData(data: Data)
+                    dataManagement.saveName(data: self.dataModel!, date: today!)
                     completion(true)
                 }
             }else{
@@ -53,5 +55,4 @@ class HomeViewModel{
         let response = try! JSONDecoder().decode(HomeModel.self, from: data)
         return response
     }
-    
 }
