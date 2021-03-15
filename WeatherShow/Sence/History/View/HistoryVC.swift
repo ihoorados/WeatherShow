@@ -13,7 +13,6 @@ protocol HistoryDelegate: class {
     func dataUpdated() -> ()
 }
 
-
 class HistoryVC: UIViewController{
     
     // init lazy viewModel
@@ -31,6 +30,8 @@ class HistoryVC: UIViewController{
         setupTitleLable()
         viewModel = HistoryViewModel(view: (self))
         viewModel.loadHistory()
+
+        
     }
     
     lazy var activityIndactor:UIActivityIndicatorView = {

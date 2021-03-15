@@ -25,7 +25,7 @@ class CardDetailsView: UIView {
     private var Title:UILabel = {
        let title = UILabel()
         title.textColor = .white
-        title.font = Setting.Display.Font.SubHead
+        title.font = Setting.Display.Font.Headline
         title.textAlignment = .left
         return title
     }()
@@ -46,8 +46,10 @@ class CardDetailsView: UIView {
     }
     
     private func setupLayout(){
-        Title.anchor(top: self.safeAreaLayoutGuide.topAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingTop: 32.0,paddingLeft: 32.0)
-        RefrenceValue.anchor(top: Title.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingLeft: 32.0)
+        Title.anchor(top: self.safeAreaLayoutGuide.topAnchor, left: self.leftAnchor, right: self.rightAnchor,
+                     paddingTop: 32.0,paddingLeft: 16.0)
+        RefrenceValue.anchor(top: Title.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,
+                             paddingLeft: 16.0)
     }
     
     

@@ -15,7 +15,7 @@ class HistoryCollectionViewCell: UICollectionViewCell{
     var LocationLabel:UILabel = {
         let label = UILabel()
         label.font = Setting.Display.Font.SubHead
-        label.textColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        label.textColor = UIColor.systemBlue
         return label
     }()
     var tempLabel:UILabel = {
@@ -44,7 +44,7 @@ class HistoryCollectionViewCell: UICollectionViewCell{
     
     func setupDataSource(object:History){
         dateLable.text = object.date
-        tempLabel.text = "\(ConvertToC(value: object.temp)) ℃"
+        tempLabel.text = "\(ConvertToC(value: Double(object.temp))) ℃"
         LocationLabel.text = object.location
     }
     

@@ -71,10 +71,14 @@ class WeatherDetailsView: UIView {
     private func setupLayout(){
         self.layer.cornerRadius = Setting.Display.cornerRadius.baseCornerRadius
         self.clipsToBounds = true
-        TodaysTitle.anchor(top: self.topAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingTop: 32.0,paddingLeft: 32.0)
-        DateTitle.anchor(top: TodaysTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingLeft: 32.0)
-        WeatherTitle.anchor(top: DateTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingLeft: 32.0)
-        WeatherDescription.anchor(top: WeatherTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,paddingLeft: 32.0)
+        TodaysTitle.anchor(top: self.topAnchor, left: self.leftAnchor, right: self.rightAnchor,
+                           paddingTop: 32.0,paddingLeft: 16.0)
+        DateTitle.anchor(top: TodaysTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,
+                         paddingLeft: 16.0)
+        WeatherTitle.anchor(top: DateTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,
+                            paddingLeft: 16.0)
+        WeatherDescription.anchor(top: WeatherTitle.bottomAnchor, left: self.leftAnchor, right: self.rightAnchor,
+                                  paddingLeft: 16.0)
     }
     
     func updateData(data:HomeModel,today:String){

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70118B1825FF8064003ED637 /* HomeUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70118B1725FF8064003ED637 /* HomeUIDelegate.swift */; };
 		702E03A72562DBAB006CFB22 /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03A62562DBAB006CFB22 /* WeatherDetailsView.swift */; };
 		702E03B12562E373006CFB22 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03B02562E373006CFB22 /* HomeViewModel.swift */; };
 		702E03B42562E3A4006CFB22 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03B32562E3A4006CFB22 /* HomeModel.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		70118B1725FF8064003ED637 /* HomeUIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIDelegate.swift; sourceTree = "<group>"; };
 		702E03A62562DBAB006CFB22 /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		702E03B02562E373006CFB22 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		702E03B32562E3A4006CFB22 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				706FB0DE2562B51800ACF3E0 /* HomeVC.swift */,
+				70118B1725FF8064003ED637 /* HomeUIDelegate.swift */,
 				706FB0F62562B7BC00ACF3E0 /* ChildVCs */,
 			);
 			path = View;
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				702E03C92562E556006CFB22 /* HttpNetwork.swift in Sources */,
+				70118B1825FF8064003ED637 /* HomeUIDelegate.swift in Sources */,
 				702E03C62562E539006CFB22 /* ServiceNetworkProtocol.swift in Sources */,
 				702E03C32562E51F006CFB22 /* ServiceNetworkTools.swift in Sources */,
 				70A84F4D256401620039594D /* Date Extention.swift in Sources */,

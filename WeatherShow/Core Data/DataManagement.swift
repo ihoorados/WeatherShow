@@ -49,6 +49,7 @@ class DataManagement {
     }()
     
     func saveName(data:HomeModel,date:String) {
+        
         let entity =  NSEntityDescription.entity(forEntityName: "History", in:managedObjectContext!)
         let item = NSManagedObject(entity: entity!, insertInto:managedObjectContext!)
         item.setValue(data.dt, forKey: "id")

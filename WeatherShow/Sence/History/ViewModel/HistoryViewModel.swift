@@ -16,7 +16,7 @@ class HistoryViewModel{
     var dataManagement: DataManagement = DataManagement()
     
     init(view:HistoryDelegate) {
-        self.HistoryVC = view
+        HistoryVC = view
     }
     
     func loadHistory(){
@@ -24,7 +24,6 @@ class HistoryViewModel{
             return
         }
         self.historys = historys
-        print(self.historys)
     }
     
 }
