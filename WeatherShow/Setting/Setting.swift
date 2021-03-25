@@ -13,7 +13,6 @@ class Setting: NSObject {
     struct Display {
         
         struct Font {
-            
             static var XXLargeTitle = UIFont.systemFont(ofSize: 48, weight: .medium)
             static var XLargeTitle = UIFont.systemFont(ofSize: 36, weight: .medium)
             static var LargeTitle = UIFont.systemFont(ofSize: 31, weight: .medium)
@@ -24,7 +23,6 @@ class Setting: NSObject {
             static var Callout = UIFont.systemFont(ofSize: 17, weight: .medium)
             static var SubHead = UIFont.systemFont(ofSize: 16, weight: .medium)
         }
-        
         
         struct Padding {
             static var left : CGFloat = 16.0

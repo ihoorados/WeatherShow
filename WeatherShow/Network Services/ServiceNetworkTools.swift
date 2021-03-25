@@ -7,6 +7,13 @@
 
 import Foundation
 
+protocol ServiceToolsProtocol {
+    func configureRequestForDataTask(_ HTTPRequest:HTTPRequest) throws -> URLRequest
+    func ValidateResponse(_ Response:HTTPURLResponse?,_ data:Data?) throws -> Data
+    func StartDataTaskWith(_ request:URLRequest, completion:@escaping(Data?,Error?) -> Void)
+    func JSONSerializationWith(_ data:Data, completion:@escaping(Dictionary<String, Any>?,Error?) -> Void)
+}
+
 
 struct ServiceNetworkTools : ServiceToolsProtocol {
             

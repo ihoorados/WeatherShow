@@ -13,7 +13,10 @@ class HomeViewModel{
     // Mark: - Properties
     var service : ServiceController = ServiceController()
     var dataManagement: DataManagement = DataManagement()
+    
     var dataModel : HomeModel?
+    
+    
     weak var Home:HomeDelegate?
     var today: String?
     

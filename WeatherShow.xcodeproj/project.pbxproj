@@ -14,7 +14,6 @@
 		702E03BC2562E4CE006CFB22 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03BB2562E4CE006CFB22 /* Services.swift */; };
 		702E03C02562E4F8006CFB22 /* ServiceNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03BF2562E4F8006CFB22 /* ServiceNetworkLayer.swift */; };
 		702E03C32562E51F006CFB22 /* ServiceNetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03C22562E51F006CFB22 /* ServiceNetworkTools.swift */; };
-		702E03C62562E539006CFB22 /* ServiceNetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03C52562E539006CFB22 /* ServiceNetworkProtocol.swift */; };
 		702E03C92562E556006CFB22 /* HttpNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03C82562E556006CFB22 /* HttpNetwork.swift */; };
 		706FB0DB2562B51800ACF3E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FB0DA2562B51800ACF3E0 /* AppDelegate.swift */; };
 		706FB0DD2562B51800ACF3E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FB0DC2562B51800ACF3E0 /* SceneDelegate.swift */; };
@@ -44,7 +43,6 @@
 		702E03BB2562E4CE006CFB22 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		702E03BF2562E4F8006CFB22 /* ServiceNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceNetworkLayer.swift; sourceTree = "<group>"; };
 		702E03C22562E51F006CFB22 /* ServiceNetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceNetworkTools.swift; sourceTree = "<group>"; };
-		702E03C52562E539006CFB22 /* ServiceNetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceNetworkProtocol.swift; sourceTree = "<group>"; };
 		702E03C82562E556006CFB22 /* HttpNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetwork.swift; sourceTree = "<group>"; };
 		706FB0D72562B51800ACF3E0 /* WeatherShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		706FB0DA2562B51800ACF3E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				702E03BB2562E4CE006CFB22 /* Services.swift */,
 				702E03BF2562E4F8006CFB22 /* ServiceNetworkLayer.swift */,
 				702E03C22562E51F006CFB22 /* ServiceNetworkTools.swift */,
-				702E03C52562E539006CFB22 /* ServiceNetworkProtocol.swift */,
 				702E03C82562E556006CFB22 /* HttpNetwork.swift */,
 			);
 			path = "Network Services";
@@ -321,7 +318,6 @@
 			files = (
 				702E03C92562E556006CFB22 /* HttpNetwork.swift in Sources */,
 				70118B1825FF8064003ED637 /* HomeUIDelegate.swift in Sources */,
-				702E03C62562E539006CFB22 /* ServiceNetworkProtocol.swift in Sources */,
 				702E03C32562E51F006CFB22 /* ServiceNetworkTools.swift in Sources */,
 				70A84F4D256401620039594D /* Date Extention.swift in Sources */,
 				706FB10A2562C0F400ACF3E0 /* WeatherInfoVC.swift in Sources */,

@@ -7,11 +7,18 @@
 
 import Foundation
 
+
+
 struct ServiceNetworkLayer{
     var tools : ServiceNetworkTools = {
         let tools = ServiceNetworkTools()
         return tools
     }()
+}
+
+
+protocol ServiceProtocol {
+    func DataTask(_ request: HTTPRequest,completion: @escaping(Data?, Error?) -> Void)
 }
 
 extension ServiceNetworkLayer : ServiceProtocol {
