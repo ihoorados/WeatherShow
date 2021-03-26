@@ -21,15 +21,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScnee
         window?.backgroundColor = #colorLiteral(red: 0.137254902, green: 0.1529411765, blue: 0.1803921569, alpha: 1)
 
-        let attrs = [NSAttributedString.Key.foregroundColor: UIColor.darkText,
-                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 19, weight: .semibold),
-                     NSAttributedString.Key.backgroundColor : UIColor.clear]
-        UINavigationBar.appearance().titleTextAttributes = attrs
-        UINavigationBar.appearance().barTintColor = .white
-        UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.137254902, green: 0.1529411765, blue: 0.1803921569, alpha: 1)
-        window?.rootViewController = UINavigationController(rootViewController: HomeVC())
+//        let attrs = [NSAttributedString.Key.foregroundColor: UIColor.darkText,
+//                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 19, weight: .semibold),
+//                     NSAttributedString.Key.backgroundColor : UIColor.clear]
+//        UINavigationBar.appearance().titleTextAttributes = attrs
+//        UINavigationBar.appearance().barTintColor = .white
+//        UINavigationBar.appearance().tintColor = #colorLiteral(red: 0.137254902, green: 0.1529411765, blue: 0.1803921569, alpha: 1)
+//        UINavigationController().navigationItem.largeTitleDisplayMode = .always
+//        UINavigationController().navigationBar.prefersLargeTitles = true
+
+        let vc = createNavController(for: HomeVC(), title: "Weather", image: UIImage(systemName: "thermometer.sun.fill")!)
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
+    
+    fileprivate func createNavController(for rootViewController: UIViewController,
+                                                      title: String,
+                                                      image: UIImage) -> UIViewController {
+        
+        rootViewController.navigationItem.title = title
+        rootViewController.navigationItem.largeTitleDisplayMode = .always
+        
+        let navController = UINavigationController(rootViewController: rootViewController)
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = image
+        navController.navigationBar.prefersLargeTitles = true
+        let attrs = [NSAttributedString.Key.foregroundColor: .label,
+                     NSAttributedString.Key.backgroundColor : UIColor.clear]
+        navController.navigationBar.largeTitleTextAttributes = attrs
+
+//        navController.navigationBar.tintColor = .darkGray
+        return navController
+    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

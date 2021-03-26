@@ -32,6 +32,7 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
         guard let parameter = httpRequest.parameter else {
             throw HTTPNetworkError.headersNil
         }
+        
         guard let parameterfeilds = parameter else {
             throw HTTPNetworkError.headersNil
         }
@@ -40,9 +41,9 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
         for (key,value) in parameterfeilds {
             items.append(URLQueryItem(name: key, value: value))
         }
-        items = items.filter{!$0.name.isEmpty}
+        items = items.filter{ !$0.name.isEmpty }
         guard let urlCompQueryItems = httpRequest.urlComp else {
-            throw HTTPNetworkError.headersNil
+            throw HTTPNetworkError.missingMethod
         }
         if !items.isEmpty {
             urlCompQueryItems.queryItems = items
@@ -50,7 +51,7 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
         
         // make request
         request = URLRequest(url: urlCompQueryItems.url!)
-        request.httpMethod = "GET"
+        request.httpMethod = httpRequest.method
         return request
         
     }

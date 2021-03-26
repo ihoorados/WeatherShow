@@ -18,7 +18,7 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     func bindingData(data:HomeModel,today:String) {
         //Update Data
         weatherDetailsView.updateData(data: data,today:today)
-        WindstatusCard.ConfigureCard(title: "Wind status", refrence: "\(data.wind.speed) m/s", color: .blue)
+        WindstatusCard.ConfigureCard(title: "Wind status", refrence: "\(data.wind.speed) m/s", color: .systemBlue)
         humidityCard.ConfigureCard(title: "Humidity", refrence: "\(data.main.humidity)%", color: #colorLiteral(red: 0.9882352941, green: 0.1764705882, blue: 0.3333333333, alpha: 1))
     }
 
@@ -48,10 +48,9 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     private var historyButton:UIButton = {
         var btn = UIButton()
         btn.setTitle("All history", for: .normal)
-        btn.titleLabel?.font = Setting.Display.Font.SubHead
-        btn.setTitleColor(.darkGray, for: .normal)
-        btn.layer.borderColor = UIColor.darkGray.cgColor
-        btn.layer.borderWidth = 2
+        btn.titleLabel?.font = Setting.Display.Font.Headline
+        btn.setTitleColor(.white, for: .normal)
+        btn.layer.backgroundColor = UIColor.systemBlue.cgColor
         return btn
     }()
     
@@ -66,12 +65,17 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     
     // Mark - configure views and apply autoLayout
     private func setupLayout(){
+        
         self.view.layer.cornerRadius = Setting.Display.cornerRadius.baseCornerRadius
         self.view.clipsToBounds = true
+        
         weatherDetailsView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, right: self.view.rightAnchor,height: 252, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
+        
         WindstatusCard.anchor(top: weatherDetailsView.bottomAnchor, left: self.view.leftAnchor, width: CardWith(width: self.view.frame.width), height: 132.0, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
+        
         humidityCard.anchor(top: weatherDetailsView.bottomAnchor, left: WindstatusCard.rightAnchor, width: CardWith(width: self.view.frame.width), height: 132.0, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
-        historyButton.anchor(left: self.view.leftAnchor, bottom:self.view.bottomAnchor,right: self.view.rightAnchor, height: 64, cornerRadius: 32.0)
+        
+        historyButton.anchor(top: WindstatusCard.bottomAnchor , left: self.view.leftAnchor,right: self.view.rightAnchor, height: 54, cornerRadius: 16.0)
         historyButton.centerX(inView: self.view)
     }
     

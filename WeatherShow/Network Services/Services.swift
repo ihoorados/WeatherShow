@@ -20,7 +20,7 @@ struct ServiceController {
         var feedRequest = HTTPRequest()
         feedRequest.method = HTTPMethod.get.rawValue
         feedRequest.urlComp = NSURLComponents(string: "https://api.openweathermap.org/data/2.5/weather")!
-        feedRequest.parameter =  ["q" : "Tehran","appid":"8110abec2c686cca32a15eb9a6dc1553"]
+        feedRequest.parameter =  ["q" : "london","appid":"8110abec2c686cca32a15eb9a6dc1553"]
         return feedRequest
     }
     

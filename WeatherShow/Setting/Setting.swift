@@ -33,9 +33,9 @@ class Setting: NSObject {
                 
         struct cornerRadius {
             static var tinyCornerRadius : CGFloat = 4
-            static var smallCornerRadius : CGFloat = 16.0
-            static var baseCornerRadius : CGFloat = 24.0
-            static var largCornerRadius : CGFloat = 64.0
+            static var smallCornerRadius : CGFloat = 8.0
+            static var baseCornerRadius : CGFloat = 16.0
+            static var largCornerRadius : CGFloat = 24.0
         }
         
     }

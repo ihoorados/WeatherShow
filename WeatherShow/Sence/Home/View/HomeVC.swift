@@ -19,6 +19,7 @@ class HomeVC: UIViewController {
     var userDelegate:UserInfoDelegate?
     var weatherDelegate:WeatherInfoDelegate?
 
+    // MARK: app life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,7 +30,7 @@ class HomeVC: UIViewController {
         viewModel.startEngine()
     }
     
-    // Mark: -properties
+    // MARK: properties
     lazy var userInfoContainer: UIView = {
         let view = UIView()
         return view
@@ -45,15 +46,15 @@ class HomeVC: UIViewController {
         return ai
     }()
     
-    // Mark - setup and add views
+    // MARK - Methods
     private func setupUIView(){
         self.view.addSubview(userInfoContainer)
         self.view.addSubview(weatherInfoContainer)
         self.view.addSubview(activityIndactor)
     }
     
-    // Mark - configure views and apply autoLayout
     private func setupUILayout(){
+        
         userInfoContainer.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor,right: self.view.rightAnchor,paddingLeft: 0.0, paddingRight: 0.0, height: view.frame.height/8)
         weatherInfoContainer.anchor(top: userInfoContainer.bottomAnchor, left: self.view.leftAnchor,bottom: self.view.bottomAnchor, right: self.view.rightAnchor,paddingLeft: 0.0, paddingBottom: 64.0, paddingRight: 0.0,width: self.view.frame.width,cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
         activityIndactor.center = self.view.center
@@ -67,6 +68,7 @@ class HomeVC: UIViewController {
     }
     
     private func addVCs(){
+        
         let userInfoVC = UserInfoVC()
         self.userDelegate = userInfoVC.self
         

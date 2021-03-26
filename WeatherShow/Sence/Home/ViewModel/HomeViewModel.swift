@@ -55,7 +55,11 @@ class HomeViewModel{
     
     // Mark: - Decode Profile Data And Update Status
     func DecodeAndUpdateData(data: Data) -> HomeModel{
-        let response = try! JSONDecoder().decode(HomeModel.self, from: data)
-        return response
+        print(data.debugDescription)
+        do{
+            let response = try? JSONDecoder().decode(HomeModel.self, from: data)
+            return response!
+        }
+
     }
 }
