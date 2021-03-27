@@ -25,8 +25,8 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setupView()
-        setupLayout()
+        setupUIView()
+        setupUILayout()
     }
     
     
@@ -55,7 +55,7 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     }()
     
     // Mark - setup and add views
-    private func setupView(){
+    private func setupUIView(){
         self.view.addSubview(weatherDetailsView)
         self.view.addSubview(WindstatusCard)
         self.view.addSubview(humidityCard)
@@ -64,7 +64,7 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     }
     
     // Mark - configure views and apply autoLayout
-    private func setupLayout(){
+    private func setupUILayout(){
         
         self.view.layer.cornerRadius = Setting.Display.cornerRadius.baseCornerRadius
         self.view.clipsToBounds = true
@@ -76,7 +76,7 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
         humidityCard.anchor(top: weatherDetailsView.bottomAnchor, left: WindstatusCard.rightAnchor, width: CardWith(width: self.view.frame.width), height: 132.0, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
         
         historyButton.anchor(top: WindstatusCard.bottomAnchor , left: self.view.leftAnchor,right: self.view.rightAnchor, height: 54, cornerRadius: 16.0)
-        historyButton.centerX(inView: self.view)
+
     }
     
     @objc func NavigateToHistory(){

@@ -63,13 +63,13 @@ class HomeVC: UIViewController {
     
     func updateViewItems(){
         addVCs()
-        userDelegate?.bindingData(data: self.viewModel.dataModel!)
         weatherDelegate?.bindingData(data: self.viewModel.dataModel!, today: viewModel.today!)
     }
     
     private func addVCs(){
         
-        let userInfoVC = UserInfoVC()
+        let location = String("\(viewModel.dataModel?.sys.country),\(viewModel.dataModel?.name)")
+        let userInfoVC = UserInfoVC(location: location)
         self.userDelegate = userInfoVC.self
         
         let weatherInfoVC = WeatherInfoVC()

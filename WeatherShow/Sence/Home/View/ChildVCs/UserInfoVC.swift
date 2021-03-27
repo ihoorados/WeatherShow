@@ -9,18 +9,26 @@ import UIKit
 
 
 protocol UserInfoDelegate: class {
-    func bindingData(data:HomeModel) -> ()
+    func updateLocationTitle(data:String) -> ()
 }
 
 class UserInfoVC: UIViewController,UserInfoDelegate {
     
     // Mark: - User Protocols for notify binding data to view
-    func bindingData(data:HomeModel) {
-        //Update Data
-        print("Update View")
-        locationTitle.text = "\(data.sys.country),\(data.name)"
+    func updateLocationTitle(data:String) {
+        locationTitle.text = data
     }
-
+    
+    private var Location: String
+    init(location:String) {
+        Location = location
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     // Mark: - app life cycle
     override func viewDidLoad() {
@@ -44,7 +52,6 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
        let title = UILabel()
         title.textColor = .darkText
         title.font = Setting.Display.Font.Headline
-        title.text = "Iran, Tehran"
         title.textAlignment = .left
         return title
     }()
@@ -72,5 +79,8 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
         userProfileImageView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, right: self.view.rightAnchor,width: 60, height: 60)
     }
     
+    private func setupDataSource(){
+        locationTitle.text = Location
+    }
 
 }
