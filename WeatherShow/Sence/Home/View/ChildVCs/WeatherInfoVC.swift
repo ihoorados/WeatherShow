@@ -32,6 +32,7 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     
     private var weatherDetailsView:WeatherDetailsView = {
        let view = WeatherDetailsView()
+        view.backgroundColor = .darkText
         return view
     }()
     

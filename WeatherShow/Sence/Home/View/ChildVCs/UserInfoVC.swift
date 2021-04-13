@@ -42,15 +42,17 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
     // Mark: - properties
     private var locationImageView:UIImageView = {
         let locationIcon = UIImageView()
-        locationIcon.image = UIImage(named: "Location-icon")
+        locationIcon.image = UIImage(systemName: "location.fill.viewfinder")
+        locationIcon.tintColor = .systemBlue
         locationIcon.contentMode = .scaleAspectFit
         locationIcon.clipsToBounds = true
+        locationIcon.backgroundColor = .clear
         return locationIcon
     }()
     
     private var locationTitle:UILabel = {
        let title = UILabel()
-        title.textColor = .darkText
+        title.textColor = .label
         title.font = Setting.Display.Font.Headline
         title.textAlignment = .left
         return title

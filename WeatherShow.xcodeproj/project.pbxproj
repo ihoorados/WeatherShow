@@ -33,6 +33,7 @@
 		70A84F6125641C880039594D /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F6025641C880039594D /* HistoryCollectionViewCell.swift */; };
 		70A84F6425641D050039594D /* HistoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F6325641D050039594D /* HistoryCollectionView.swift */; };
 		70A84F6A25641DDC0039594D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A84F6925641DDC0039594D /* HistoryViewModel.swift */; };
+		70E01C5B2626398700E402AA /* Appcoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E01C5A2626398700E402AA /* Appcoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		70A84F6025641C880039594D /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		70A84F6325641D050039594D /* HistoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionView.swift; sourceTree = "<group>"; };
 		70A84F6925641DDC0039594D /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		70E01C5A2626398700E402AA /* Appcoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appcoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		7072CFC22563FAA500D25AD6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				70E01C592626396E00E402AA /* Coordinator */,
 				706FB0F22562B72500ACF3E0 /* Model */,
 				706FB0F32562B72D00ACF3E0 /* View */,
 				706FB0F42562B73600ACF3E0 /* ViewModel */,
@@ -245,6 +248,14 @@
 				70A84F5F25641C5D0039594D /* HistoryCollectionView */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		70E01C592626396E00E402AA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				70E01C5A2626398700E402AA /* Appcoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +336,7 @@
 				702E03BC2562E4CE006CFB22 /* Services.swift in Sources */,
 				706FB0DB2562B51800ACF3E0 /* AppDelegate.swift in Sources */,
 				706FB0DD2562B51800ACF3E0 /* SceneDelegate.swift in Sources */,
+				70E01C5B2626398700E402AA /* Appcoordinator.swift in Sources */,
 				70A84F6A25641DDC0039594D /* HistoryViewModel.swift in Sources */,
 				702E03A72562DBAB006CFB22 /* WeatherDetailsView.swift in Sources */,
 				706FB1012562BB8C00ACF3E0 /* Setting.swift in Sources */,
