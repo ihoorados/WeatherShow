@@ -38,7 +38,6 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
         setupLayout()
     }
     
-    
     // Mark: - properties
     private var locationImageView:UIImageView = {
         let locationIcon = UIImageView()

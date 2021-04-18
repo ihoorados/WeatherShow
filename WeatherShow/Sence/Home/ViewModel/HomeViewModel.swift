@@ -17,22 +17,22 @@ class HomeViewModel{
     var dataModel : HomeModel?
     
     
-    weak var Home:HomeDelegate?
+    weak var HomeDelegate:HomeDelegate?
     var today: String?
     
     init(view:HomeDelegate) {
-        self.Home = view
-        self.today = Date().getToday()
+        HomeDelegate = view
+        today = Date().getToday()
     }
     
     func startEngine(){
-        Home?.updatingData()
+        HomeDelegate?.updatingData()
         DispatchQueue.main.async {
             self.LoadData { (success) in
                 if success {
-                    self.Home?.dataUpdated()
+                    self.HomeDelegate?.dataUpdated()
                 }else{
-                    self.Home?.invalidData()
+                    self.HomeDelegate?.invalidData()
                 }
             }
         }
@@ -60,6 +60,5 @@ class HomeViewModel{
             let response = try? JSONDecoder().decode(HomeModel.self, from: data)
             return response!
         }
-
     }
 }

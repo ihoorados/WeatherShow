@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		70118B1825FF8064003ED637 /* HomeUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70118B1725FF8064003ED637 /* HomeUIDelegate.swift */; };
+		702704D0262CCE0E001D0B74 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702704CF262CCE0E001D0B74 /* HomeRepository.swift */; };
 		702E03A72562DBAB006CFB22 /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03A62562DBAB006CFB22 /* WeatherDetailsView.swift */; };
 		702E03B12562E373006CFB22 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03B02562E373006CFB22 /* HomeViewModel.swift */; };
 		702E03B42562E3A4006CFB22 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E03B32562E3A4006CFB22 /* HomeModel.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		70118B1725FF8064003ED637 /* HomeUIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIDelegate.swift; sourceTree = "<group>"; };
+		702704CF262CCE0E001D0B74 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		702E03A62562DBAB006CFB22 /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		702E03B02562E373006CFB22 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		702E03B32562E3A4006CFB22 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		702704CC262CCDD9001D0B74 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				702704CF262CCE0E001D0B74 /* HomeRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		702E03AD2562E2B9006CFB22 /* Sence */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +209,7 @@
 		7072CFC22563FAA500D25AD6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				702704CC262CCDD9001D0B74 /* Repository */,
 				70E01C592626396E00E402AA /* Coordinator */,
 				706FB0F22562B72500ACF3E0 /* Model */,
 				706FB0F32562B72D00ACF3E0 /* View */,
@@ -341,6 +352,7 @@
 				702E03A72562DBAB006CFB22 /* WeatherDetailsView.swift in Sources */,
 				706FB1012562BB8C00ACF3E0 /* Setting.swift in Sources */,
 				702E03B12562E373006CFB22 /* HomeViewModel.swift in Sources */,
+				702704D0262CCE0E001D0B74 /* HomeRepository.swift in Sources */,
 				706FB0FD2562BB6600ACF3E0 /* UIView Constraint.swift in Sources */,
 				702E03B42562E3A4006CFB22 /* HomeModel.swift in Sources */,
 				70A84F6425641D050039594D /* HistoryCollectionView.swift in Sources */,
