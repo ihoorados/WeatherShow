@@ -25,9 +25,9 @@ struct ServiceController {
     }
     
     // Mark: - request
-    func RequestWeather(completion: @escaping (Data?, Error?) -> Void){
-        ServiceShared.DataTask(Request) { (data, err) in
-            completion(data,err)
+    func RequestWeather(completion: @escaping (Result<Data, Error>) -> Void){
+        ServiceShared.DataTask(Request) { (Result) in
+            completion(Result)
         }
     }
 }

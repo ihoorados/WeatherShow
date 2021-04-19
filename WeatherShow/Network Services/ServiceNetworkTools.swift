@@ -8,9 +8,10 @@
 import Foundation
 
 protocol ServiceToolsProtocol {
+    typealias fetchResult = (Result<Data, Error>) -> Void
+    func StartDataTaskWith(_ request:URLRequest, completion:@escaping fetchResult)
     func configureRequestForDataTask(_ HTTPRequest:HTTPRequest) throws -> URLRequest
     func ValidateResponse(_ Response:HTTPURLResponse?,_ data:Data?) throws -> Data
-    func StartDataTaskWith(_ request:URLRequest, completion:@escaping(Data?,Error?) -> Void)
     func JSONSerializationWith(_ data:Data, completion:@escaping(Dictionary<String, Any>?,Error?) -> Void)
 }
 
@@ -58,15 +59,15 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
     
 
     
-    func StartDataTaskWith(_ request: URLRequest, completion: @escaping (Data?, Error?) -> Void) {
+    func StartDataTaskWith(_ request: URLRequest, completion: @escaping fetchResult) {
         
         let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
             do{
-                if let error = error { completion(nil,error)}
+                if let error = error { completion(.failure(error))}
                 let data = try self.ValidateResponse(response as? HTTPURLResponse,data)
-                completion(data,nil)
+                completion(.success(data))
             }catch let err{
-                completion(nil,err)
+                completion(.failure(err))
             }
         })
         task.resume()

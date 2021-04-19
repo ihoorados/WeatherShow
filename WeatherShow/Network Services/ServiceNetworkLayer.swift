@@ -18,19 +18,22 @@ struct ServiceNetworkLayer{
 
 
 protocol ServiceProtocol {
-    func DataTask(_ request: HTTPRequest,completion: @escaping(Data?, Error?) -> Void)
+    typealias fetchResult = (Result<Data, Error>) -> Void
+    func DataTask(_ request: HTTPRequest,completion: @escaping fetchResult)
 }
 
 extension ServiceNetworkLayer : ServiceProtocol {
     
-    func DataTask(_ request: HTTPRequest, completion: @escaping (Data?, Error?) -> Void) {
+    func DataTask(_ request: HTTPRequest, completion: @escaping fetchResult) {
         do{
             // create URLRequest
             let TaskRequest = try tools.configureRequestForDataTask(request)
             // Start new task with Task Request
-            tools.StartDataTaskWith(TaskRequest) { (data, error) in
-                completion(data,error)
+            tools.StartDataTaskWith(TaskRequest) { (Result) in
+                completion(Result)
             }
-        }catch{ completion(nil,HTTPNetworkError.badRequest) }
+        }catch{
+            completion(.failure(HTTPNetworkError.badRequest))
+        }
     }
 }

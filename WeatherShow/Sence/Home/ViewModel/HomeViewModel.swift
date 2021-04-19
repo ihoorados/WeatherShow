@@ -39,16 +39,17 @@ class HomeViewModel{
     }    
     
     func LoadData(completion: @escaping (Bool) -> Void){
-        service.RequestWeather { (data, err) in
-            if let Data = data {
-                self.service.ServiceShared.tools.JSONSerializationWith(Data) { [self] (json, err) in
-                    self.dataModel = self.DecodeAndUpdateData(data: Data)
-                    dataManagement.saveName(data: self.dataModel!, date: today!)
-                    completion(true)
-                }
-            }else{
-                print(err.debugDescription)
-                completion(false)
+        service.RequestWeather { (Result) in
+            switch Result{
+                case .success(let data):
+                    self.service.ServiceShared.tools.JSONSerializationWith(data) { [weak self] (json, err) in
+                        self?.dataModel = self?.DecodeAndUpdateData(data: data)
+                        //dataManagement.saveName(data: self?.dataModel, date: today!)
+                        completion(true)
+                    }
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    completion(false)
             }
         }
     }
