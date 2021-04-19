@@ -1,8 +1,6 @@
 # WeatherShow
-
+trying to develope
 Weather Show 
-
-![Header](/weatherShowimg.png)
 
 # Architect
 
