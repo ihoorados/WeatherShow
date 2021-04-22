@@ -16,7 +16,6 @@ struct ServiceNetworkLayer{
     }()
 }
 
-
 protocol ServiceProtocol {
     typealias fetchResult = (Result<Data, Error>) -> Void
     func DataTask(_ request: HTTPRequest,completion: @escaping fetchResult)
