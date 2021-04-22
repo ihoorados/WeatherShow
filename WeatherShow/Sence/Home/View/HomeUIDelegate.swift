@@ -8,12 +8,19 @@
 import Foundation
 import UIKit
 
+
+enum HomeState {
+    case loading
+    case active
+}
+
 // Mark: - Home Data Model Delegate
 protocol HomeDelegate: class {
     func RenderUI()
-    func updatingData()
-    func invalidData()
+    func HomeStateChange(state: HomeState)
+    func loading()
     func dataUpdated()
+    func invalidData()
 }
 
 extension HomeVC : HomeDelegate {
@@ -24,12 +31,21 @@ extension HomeVC : HomeDelegate {
         setupUILayout()
     }
     
+    func HomeStateChange(state:HomeState){
+        switch state {
+        case .active:
+            dataUpdated()
+        case .loading:
+            loading()
+        }
+    }
+    
     func invalidData() {
         // Restart engine
         viewModel.startEngine()
     }
     
-    func updatingData() {
+    func loading() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.5) {
                 self.activityIndactor.startAnimating()

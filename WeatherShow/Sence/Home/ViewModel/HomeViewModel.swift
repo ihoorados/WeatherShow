@@ -12,14 +12,10 @@ class HomeViewModel{
     
     // Mark: - Properties
     var service : HomeRepositoryProtocol
-    var dataModel : HomeModel?
-    
-    typealias FetchCompletion = (Result<Data, Error>) -> Void
 
-    
-    
+    var dataModel : HomeModel?
     weak var HomeDelegate:HomeDelegate?
-    var today: String?
+    var today: String
     
     init(service: HomeRepositoryProtocol = HomeRepositoryImp()) {
         today = Date().getToday()
@@ -27,16 +23,15 @@ class HomeViewModel{
     }
     
     func startEngine(){
-        
         HomeDelegate?.RenderUI()
-        
-        
-        HomeDelegate?.updatingData()
+        HomeDelegate?.HomeStateChange(state: .loading)
         DispatchQueue.main.async {
             self.LoadData { (success) in
                 if success {
-                    self.HomeDelegate?.dataUpdated()
+                    print("✅ HomeViewModel: Data update successfully.")
+                    self.HomeDelegate?.HomeStateChange(state: .active)
                 }else{
+                    print("❌ HomeViewModel: Loading Data failed.")
                     self.HomeDelegate?.invalidData()
                 }
             }
@@ -58,10 +53,9 @@ class HomeViewModel{
     
     // Mark: - Decode Profile Data And Update Status
     func DecodeAndUpdateData(data: Data) -> HomeModel{
-        print(data.debugDescription)
         do{
             let response = try? JSONDecoder().decode(HomeModel.self, from: data)
             return response!
-        }
+        }catch(let err){ print(err.localizedDescription) }
     }
 }
