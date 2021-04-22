@@ -10,12 +10,19 @@ import UIKit
 
 // Mark: - Home Data Model Delegate
 protocol HomeDelegate: class {
+    func RenderUI()
     func updatingData()
     func invalidData()
     func dataUpdated()
 }
 
 extension HomeVC : HomeDelegate {
+    
+    // MARK: Render Home User Interface
+    func RenderUI(){
+        setupUIView()
+        setupUILayout()
+    }
     
     func invalidData() {
         // Restart engine

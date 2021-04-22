@@ -33,6 +33,15 @@ struct HomeRepositoryImp: HomeRepositoryProtocol {
 private extension HomeRepositoryImp {
     
     func persistorFetch(_ completion: @escaping FetchCompletion) {
+        interactor.RequestWeather { (Result) in
+            switch Result{
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    completion(.failure(err))
+            }
+        }
     }
     
 }

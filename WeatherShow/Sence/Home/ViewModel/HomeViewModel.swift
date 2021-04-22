@@ -11,21 +11,26 @@ import Combine
 class HomeViewModel{
     
     // Mark: - Properties
-    var service : ServiceController = ServiceController()
-    var dataManagement: DataManagement = DataManagement()
-    
+    var service : HomeRepositoryProtocol
     var dataModel : HomeModel?
+    
+    typealias FetchCompletion = (Result<Data, Error>) -> Void
+
     
     
     weak var HomeDelegate:HomeDelegate?
     var today: String?
     
-    init(view:HomeDelegate) {
-        HomeDelegate = view
+    init(service: HomeRepositoryProtocol = HomeRepositoryImp()) {
         today = Date().getToday()
+        self.service = service
     }
     
     func startEngine(){
+        
+        HomeDelegate?.RenderUI()
+        
+        
         HomeDelegate?.updatingData()
         DispatchQueue.main.async {
             self.LoadData { (success) in
@@ -42,11 +47,8 @@ class HomeViewModel{
         service.RequestWeather { (Result) in
             switch Result{
                 case .success(let data):
-                    self.service.ServiceShared.tools.JSONSerializationWith(data) { [weak self] (json, err) in
-                        self?.dataModel = self?.DecodeAndUpdateData(data: data)
-                        //dataManagement.saveName(data: self?.dataModel, date: today!)
-                        completion(true)
-                    }
+                    self.dataModel = self.DecodeAndUpdateData(data: data)
+                    completion(true)
                 case .failure(let err):
                     print(err.localizedDescription)
                     completion(false)

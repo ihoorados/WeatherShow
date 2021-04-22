@@ -129,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				70A84F5425641A1E0039594D /* Core Data */,
+				70E01C592626396E00E402AA /* Coordinator */,
 				702E03B62562E402006CFB22 /* Network Services */,
 				706FB10D2562CCE200ACF3E0 /* ReusableViews */,
 				706FB0FF2562BB8100ACF3E0 /* Setting */,
@@ -209,11 +210,10 @@
 		7072CFC22563FAA500D25AD6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				702704CC262CCDD9001D0B74 /* Repository */,
-				70E01C592626396E00E402AA /* Coordinator */,
 				706FB0F22562B72500ACF3E0 /* Model */,
 				706FB0F32562B72D00ACF3E0 /* View */,
 				706FB0F42562B73600ACF3E0 /* ViewModel */,
+				702704CC262CCDD9001D0B74 /* Repository */,
 			);
 			path = Home;
 			sourceTree = "<group>";
