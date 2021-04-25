@@ -30,6 +30,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("📲 --------- HomeVC view did load ---------")
         self.view.backgroundColor = .systemBackground
         self.title = "Weather Show"
         viewModel.startEngine()
@@ -59,6 +60,7 @@ class HomeVC: UIViewController {
         self.view.addSubview(userInfoContainer)
         self.view.addSubview(weatherInfoContainer)
         self.view.addSubview(activityIndactor)
+        print("✅ HomeVC : setup UIViews Completed.")
     }
     
     func setupUILayout(){
@@ -79,6 +81,7 @@ class HomeVC: UIViewController {
         
         activityIndactor.center = self.view.center
         self.view.layoutIfNeeded()
+        print("✅ HomeVC : setup UILayouts completed.")
     }
     
     func updateViewItems(){

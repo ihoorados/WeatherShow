@@ -11,7 +11,6 @@ protocol ServiceToolsProtocol {
     typealias fetchResult = (Result<Data, Error>) -> Void
     func StartDataTaskWith(_ request:URLRequest, completion:@escaping fetchResult)
     func configureRequestForDataTask(_ HTTPRequest:HTTPRequest) throws -> URLRequest
-    func ValidateResponse(_ Response:HTTPURLResponse?,_ data:Data?) throws -> Data
     func JSONSerializationWith(_ data:Data, completion:@escaping(Dictionary<String, Any>?,Error?) -> Void)
 }
 
@@ -31,32 +30,47 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
         
         // Validate Parameter
         guard let parameter = httpRequest.parameter else {
-            throw HTTPNetworkError.headersNil
+            throw HTTPNetworkError.parametersNil
         }
         
         guard let parameterfeilds = parameter else {
-            throw HTTPNetworkError.headersNil
+            throw HTTPNetworkError.parametersNil
         }
-        
         // add parameter
         for (key,value) in parameterfeilds {
             items.append(URLQueryItem(name: key, value: value))
         }
+        
         items = items.filter{ !$0.name.isEmpty }
         guard let urlCompQueryItems = httpRequest.urlComp else {
-            throw HTTPNetworkError.missingMethod
+            throw HTTPNetworkError.missingURL
         }
         if !items.isEmpty {
             urlCompQueryItems.queryItems = items
         }
         
+        guard let url = urlCompQueryItems.url else {
+            throw HTTPNetworkError.missingURL
+        }
+        
         // make request
-        request = URLRequest(url: urlCompQueryItems.url!)
+        request = URLRequest(url: url)
         request.httpMethod = httpRequest.method
         return request
-        
     }
     
+    
+    private func ValidateResponse(_ Response: HTTPURLResponse?, _ data: Data?) throws -> Data {
+        guard let response = Response else { throw HTTPNetworkError.noData }
+        switch response.statusCode {
+        case 400:
+            throw HTTPNetworkError.badRequest
+        default:
+            break
+        }
+        guard let data = data else { throw HTTPNetworkError.noData }
+        return data
+    }
 
     
     func StartDataTaskWith(_ request: URLRequest, completion: @escaping fetchResult) {
@@ -75,7 +89,6 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
     }
     
     func JSONSerializationWith(_ data: Data, completion: @escaping([String:Any]?, Error?) -> Void) {
-        
         do {
             // make sure this JSON is in the format we expect
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
@@ -88,17 +101,7 @@ struct ServiceNetworkTools : ServiceToolsProtocol {
     }
 
     
-    func ValidateResponse(_ Response: HTTPURLResponse?, _ data: Data?) throws -> Data {
-        guard let response = Response else { throw HTTPNetworkError.badRequest }
-        switch response.statusCode {
-        case 400:
-            throw HTTPNetworkError.badRequest
-        default:
-            break
-        }
-        guard let data = data else { throw HTTPNetworkError.noData }
-        return data
-    }
+
     
     
 }

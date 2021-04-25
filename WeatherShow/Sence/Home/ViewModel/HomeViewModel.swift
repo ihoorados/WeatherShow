@@ -23,6 +23,8 @@ class HomeViewModel{
     }
     
     func startEngine(){
+        
+        print("🟩 HomeViewModel : Start Engine.")
         HomeDelegate?.RenderUI()
         HomeDelegate?.HomeStateChange(state: .loading)
         DispatchQueue.main.async {
@@ -56,6 +58,6 @@ class HomeViewModel{
         do{
             let response = try? JSONDecoder().decode(HomeModel.self, from: data)
             return response!
-        }catch(let err){ print(err.localizedDescription) }
+        }
     }
 }
