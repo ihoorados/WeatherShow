@@ -14,7 +14,7 @@ protocol WeatherInfoDelegate: class {
 
 class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
     
-    // Mark: - User Protocols for notify binding data to view
+    // Mark: - Weather Info Delegate Protocols for notify binding data to view
     func bindingData(data:HomeModel,today:String) {
         //Update Data
         weatherDetailsView.updateData(data: data,today:today)

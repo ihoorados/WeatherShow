@@ -16,6 +16,7 @@ class HomeVC: UIViewController {
     var userDelegate:UserInfoDelegate?
     var weatherDelegate:WeatherInfoDelegate?
     
+    // MARK: Dependecny
     init(viewModel:HomeViewModel = HomeViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -27,6 +28,7 @@ class HomeVC: UIViewController {
     
 
     // MARK: app life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -36,7 +38,13 @@ class HomeVC: UIViewController {
         viewModel.startEngine()
     }
     
+    
     // MARK: UI Properties
+    /*
+     userInfoContainer
+     weatherInfoContainer
+     activityIndactor
+    */
     lazy var userInfoContainer: UIView = {
         let view = UIView()
         view.backgroundColor = .tertiarySystemBackground
@@ -55,12 +63,26 @@ class HomeVC: UIViewController {
     }()
     
     
-    // MARK - Methods
+    // MARK:  Methods
+    /*
+     setupUIView
+     setupUILayout
+     updateViewItems
+     addVCs
+    */
+    
     func setupUIView(){
         self.view.addSubview(userInfoContainer)
         self.view.addSubview(weatherInfoContainer)
         self.view.addSubview(activityIndactor)
         print("✅ HomeVC : setup UIViews Completed.")
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItems = [add]
+    }
+    
+    @objc func addTapped(_ Sender:UIButton){
+        print("add Tapped")
     }
     
     func setupUILayout(){
@@ -100,5 +122,23 @@ class HomeVC: UIViewController {
         
         add(vc: userInfoVC, to: userInfoContainer)
         add(vc: weatherInfoVC, to: weatherInfoContainer)
+    }
+    
+    func loading() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) {
+                self.activityIndactor.startAnimating()
+            }
+        }
+    }
+    
+    func dataUpdated() {
+        DispatchQueue.main.async {
+            self.updateViewItems()
+            UIView.animate(withDuration: 0.5) {
+                self.activityIndactor.stopAnimating()
+                self.activityIndactor.alpha = 0.0
+            }
+        }
     }
 }

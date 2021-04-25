@@ -11,12 +11,14 @@ import Combine
 class HomeViewModel{
     
     // Mark: - Properties
-    var service : HomeRepositoryProtocol
+    private var service : HomeRepositoryProtocol
 
-    var dataModel : HomeModel?
     weak var HomeDelegate:HomeDelegate?
-    var today: String
     
+    
+    var today: String
+    var dataModel : HomeModel?
+
     init(service: HomeRepositoryProtocol = HomeRepositoryImp()) {
         today = Date().getToday()
         self.service = service
@@ -34,7 +36,7 @@ class HomeViewModel{
                     self.HomeDelegate?.HomeStateChange(state: .active)
                 }else{
                     print("❌ HomeViewModel: Loading Data failed.")
-                    self.HomeDelegate?.invalidData()
+                    self.HomeDelegate?.HomeStateChange(state: .loading)
                 }
             }
         }

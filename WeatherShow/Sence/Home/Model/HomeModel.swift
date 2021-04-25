@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 protocol HomeModelPresentable {
     var date:           String  {get}
     var temp:           String  {get}
