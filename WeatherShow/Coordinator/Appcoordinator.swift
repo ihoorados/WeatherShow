@@ -26,6 +26,8 @@ final class AppCoordinator: Coordinator {
         let viewController = HomeVC()
         navigationController.viewControllers = [viewController]
         window.rootViewController = navigationController
+        
+        
         window.makeKeyAndVisible()
     }
     

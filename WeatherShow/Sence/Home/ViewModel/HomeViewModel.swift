@@ -12,9 +12,7 @@ class HomeViewModel{
     
     // Mark: - Properties
     private var service : HomeRepositoryProtocol
-
     weak var HomeDelegate:HomeDelegate?
-    
     
     var today: String
     var dataModel : HomeModel?
@@ -29,6 +27,8 @@ class HomeViewModel{
         print("🟩 HomeViewModel : Start Engine.")
         HomeDelegate?.RenderUI()
         HomeDelegate?.HomeStateChange(state: .loading)
+        
+        
         DispatchQueue.main.async {
             self.LoadData { (success) in
                 if success {

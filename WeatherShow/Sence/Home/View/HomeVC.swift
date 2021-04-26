@@ -47,18 +47,20 @@ class HomeVC: UIViewController {
     */
     lazy var userInfoContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .secondarySystemBackground
         return view
     }()
     
     lazy var weatherInfoContainer: UIView = {
         let view = UIView()
+        view.backgroundColor = .secondarySystemBackground
         return view
     }()
     
     lazy var activityIndactor:UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .large)
         ai.color = .darkText
+        ai.hidesWhenStopped = true
         return ai
     }()
     
@@ -71,13 +73,24 @@ class HomeVC: UIViewController {
      addVCs
     */
     
+    // Mark: -navigation Bar
+    func setupUINavigationBar(){
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        let attrs = [NSAttributedString.Key.foregroundColor: .label,
+                     NSAttributedString.Key.backgroundColor : UIColor.clear]
+        navigationController?.navigationBar.largeTitleTextAttributes = attrs
+        self.navigationItem.title = "Weather"
+        print("🔹 HomeVC : Navigation Bar Set.")
+    }
+    
     func setupUIView(){
         self.view.addSubview(userInfoContainer)
         self.view.addSubview(weatherInfoContainer)
         self.view.addSubview(activityIndactor)
         print("✅ HomeVC : setup UIViews Completed.")
         
-        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        let add = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItems = [add]
     }
     
@@ -91,7 +104,8 @@ class HomeVC: UIViewController {
                                  right: self.view.rightAnchor,
                                  paddingLeft: 0.0,
                                  paddingRight: 0.0,
-                                 height: view.frame.height/8)
+                                 height: 76,
+                                 cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
         
         weatherInfoContainer.anchor(top: userInfoContainer.bottomAnchor,
                                     left: self.view.leftAnchor,
@@ -106,15 +120,9 @@ class HomeVC: UIViewController {
         print("✅ HomeVC : setup UILayouts completed.")
     }
     
-    func updateViewItems(){
-        addVCs()
-        weatherDelegate?.bindingData(data: self.viewModel.dataModel!, today: viewModel.today)
-    }
-    
-    private func addVCs(){
+    func addVCs(){
         
-        let location = String("\(viewModel.dataModel?.sys.country),\(viewModel.dataModel?.name)")
-        let userInfoVC = UserInfoVC(location: location)
+        let userInfoVC = UserInfoVC(location: "location")
         self.userDelegate = userInfoVC.self
         
         let weatherInfoVC = WeatherInfoVC()
@@ -134,10 +142,8 @@ class HomeVC: UIViewController {
     
     func dataUpdated() {
         DispatchQueue.main.async {
-            self.updateViewItems()
             UIView.animate(withDuration: 0.5) {
                 self.activityIndactor.stopAnimating()
-                self.activityIndactor.alpha = 0.0
             }
         }
     }

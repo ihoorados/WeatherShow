@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol HomeModelPresentable {
+protocol HomeModelPresentable : Decodable {
     var date:           String  {get}
     var temp:           String  {get}
     var description:    String  {get}

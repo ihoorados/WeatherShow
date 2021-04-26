@@ -46,22 +46,11 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
         return view
     }()
     
-    private var historyButton:UIButton = {
-        var btn = UIButton()
-        btn.setTitle("All history", for: .normal)
-        btn.titleLabel?.font = Setting.Display.Font.Headline
-        btn.setTitleColor(.white, for: .normal)
-        btn.layer.backgroundColor = UIColor.systemBlue.cgColor
-        return btn
-    }()
-    
     // Mark - setup and add views
     private func setupUIView(){
         self.view.addSubview(weatherDetailsView)
         self.view.addSubview(WindstatusCard)
         self.view.addSubview(humidityCard)
-        self.view.addSubview(historyButton)
-        historyButton.addTarget(self, action: #selector(NavigateToHistory), for: .touchUpInside)
     }
     
     // Mark - configure views and apply autoLayout
@@ -75,13 +64,6 @@ class WeatherInfoVC: UIViewController, WeatherInfoDelegate {
         WindstatusCard.anchor(top: weatherDetailsView.bottomAnchor, left: self.view.leftAnchor, width: CardWith(width: self.view.frame.width), height: 132.0, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
         
         humidityCard.anchor(top: weatherDetailsView.bottomAnchor, left: WindstatusCard.rightAnchor, width: CardWith(width: self.view.frame.width), height: 132.0, cornerRadius: Setting.Display.cornerRadius.baseCornerRadius)
-        
-        historyButton.anchor(top: WindstatusCard.bottomAnchor , left: self.view.leftAnchor,right: self.view.rightAnchor, height: 54, cornerRadius: 16.0)
-
-    }
-    
-    @objc func NavigateToHistory(){
-        self.present(HistoryVC(), animated: true, completion: nil)
     }
     
     func CardWith(width:CGFloat) -> CGFloat {

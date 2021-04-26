@@ -6,9 +6,11 @@
 //
 
 import Foundation
-
-import Foundation
 import Network
+
+
+
+// MARK: Repository Pattern
 
 protocol HomeRepositoryProtocol {
     typealias FetchCompletion = (Result<Data, Error>) -> Void

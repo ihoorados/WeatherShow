@@ -9,13 +9,16 @@ import UIKit
 
 
 protocol UserInfoDelegate: class {
-    func updateLocationTitle(data:String) -> ()
+    func updateLocationTitle(data:String)
 }
+
+
 
 class UserInfoVC: UIViewController,UserInfoDelegate {
     
     // Mark: - User Protocols for notify binding data to view
     func updateLocationTitle(data:String) {
+        print("UserInfoVC : Location Updated at \(data)")
         locationTitle.text = data
     }
     
@@ -42,7 +45,7 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
     private var locationImageView:UIImageView = {
         let locationIcon = UIImageView()
         locationIcon.image = UIImage(systemName: "location.fill.viewfinder")
-        locationIcon.tintColor = .systemBlue
+        locationIcon.tintColor = .label
         locationIcon.contentMode = .scaleAspectFit
         locationIcon.clipsToBounds = true
         locationIcon.backgroundColor = .clear
@@ -51,7 +54,7 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
     
     private var locationTitle:UILabel = {
        let title = UILabel()
-        title.textColor = .label
+        title.textColor = .white
         title.font = Setting.Display.Font.Headline
         title.textAlignment = .left
         return title
@@ -59,9 +62,10 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
     
     private var userProfileImageView:UIImageView = {
         let userProfileImage = UIImageView()
-        userProfileImage.image = UIImage(named: "User-profile")
+        userProfileImage.image = UIImage(systemName: "person.circle.fill")
         userProfileImage.contentMode = .scaleAspectFit
         userProfileImage.clipsToBounds = true
+        userProfileImage.tintColor = .label
         return userProfileImage
     }()
     
@@ -75,9 +79,16 @@ class UserInfoVC: UIViewController,UserInfoDelegate {
     
     // Mark - configure views and apply autoLayout
     private func setupLayout(){
-        locationImageView.anchor(top: self.view.topAnchor,left: self.view.leftAnchor, width: 40.0, height: 40.0)
-        locationTitle.anchor(top: self.view.topAnchor,left: locationImageView.rightAnchor,right: self.view.safeAreaLayoutGuide.rightAnchor,paddingTop: 24.0)
-        userProfileImageView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, right: self.view.rightAnchor,width: 60, height: 60)
+        locationImageView.anchor(top: self.view.topAnchor,
+                                 left: self.view.leftAnchor,
+                                 width: 40, height: 40)
+        locationTitle.anchor(top: self.view.topAnchor,
+                             left: locationImageView.rightAnchor,
+                             right: userProfileImageView.safeAreaLayoutGuide.leftAnchor,
+                             paddingTop: 24.0)
+        userProfileImageView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor,
+                                    right: self.view.rightAnchor,
+                                    width: 40, height: 40)
     }
     
     private func setupDataSource(){
